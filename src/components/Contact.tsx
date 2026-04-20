@@ -1,0 +1,255 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { FiMail, FiMapPin, FiSend } from "react-icons/fi";
+import { BsCheckCircleFill } from "react-icons/bs";
+import { useContactForm } from "@/hooks/useContactForm";
+
+export default function Contact() {
+    const {
+        form,
+        loading,
+        success,
+        error,
+        handleChange,
+        handleSubmit,
+    } = useContactForm();
+
+    return (
+        <section
+            id="contact"
+            className="relative min-h-screen flex items-center justify-center py-20 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 text-white overflow-hidden"
+        >
+            {/* Static Background Glows — no scroll listener */}
+            <div className="absolute top-1/4 left-1/4 w-[250px] h-[250px] sm:w-[700px] sm:h-[700px] -translate-x-1/2 -translate-y-1/2 bg-purple-600/20 blur-[50px] md:blur-[80px] rounded-full pointer-events-none" />
+            <div className="absolute bottom-1/4 right-1/4 w-[250px] h-[250px] sm:w-[700px] sm:h-[700px] translate-x-1/2 translate-y-1/2 bg-cyan-600/20 blur-[50px] md:blur-[80px] rounded-full pointer-events-none" />
+
+            <div className="max-w-7xl w-full mx-auto relative z-10">
+                {/* Title */}
+                <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="text-4xl sm:text-5xl lg:text-6xl font-bold text-center mb-4 bg-gradient-to-r from-purple-400 via-cyan-400 to-pink-400 bg-clip-text text-transparent"
+                >
+                    Let&apos;s Build Something
+                </motion.h2>
+
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="text-center text-xl sm:text-2xl text-gray-400 mb-12 sm:mb-16 lg:mb-20"
+                >
+                    Impactful Together
+                </motion.p>
+
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 max-w-6xl mx-auto">
+                    {/* ============================= */}
+                    {/*         LEFT SIDE - INFO      */}
+                    {/* ============================= */}
+
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        className="space-y-8"
+                    >
+                        {/* Description */}
+                        <div className="space-y-4">
+                            <h3 className="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                                Open for Opportunities
+                            </h3>
+                            <p className="text-gray-400 leading-relaxed text-base sm:text-lg">
+                                Open to freelance opportunities, full-time positions, and collaborations on innovative products. 
+                                Let’s build something impactful together.
+
+                            </p>
+                        </div>
+
+                        {/* Contact Info Cards */}
+                        <div className="space-y-4">
+                            {/* Email */}
+                            <motion.div
+                                whileHover={{ scale: 1.02 }}
+                                className="group p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-purple-500/50 transition-all duration-300"
+                            >
+                                <div className="flex items-center gap-4">
+                                    <div className="relative">
+                                        <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-cyan-400 blur-md md:blur-lg opacity-50 rounded-xl" />
+                                        <div className="relative w-12 h-12 rounded-xl bg-gradient-to-r from-purple-500/20 to-cyan-500/20 flex items-center justify-center border border-white/20">
+                                            <FiMail className="text-purple-400" size={20} />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p className="text-xs text-gray-500 mb-1">Email</p>
+                                        <p className="text-sm sm:text-base text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 font-medium">
+                                            Officiallyaditya03@gmail.com
+                                        </p>
+                                    </div>
+                                </div>
+                            </motion.div>
+
+                            {/* Location */}
+                            <motion.div
+                                whileHover={{ scale: 1.02 }}
+                                className="group p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-500/50 transition-all duration-300"
+                            >
+                                <div className="flex items-center gap-4">
+                                    <div className="relative">
+                                        <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-400 blur-md md:blur-lg opacity-50 rounded-xl" />
+                                        <div className="relative w-12 h-12 rounded-xl bg-gradient-to-r from-cyan-500/20 to-purple-500/20 flex items-center justify-center border border-white/20">
+                                            <FiMapPin className="text-cyan-400" size={20} />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p className="text-xs text-gray-500 mb-1">Location</p>
+                                        <p className="text-sm sm:text-base text-white font-medium">
+                                            India
+                                        </p>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </div>
+
+                        {/* Availability Indicator */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ delay: 0.4 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            className="flex items-center gap-3 p-4 rounded-xl bg-green-500/10 border border-green-500/30"
+                        >
+                            {/* Availability dot — CSS animate-ping (compositor thread, zero JS) */}
+                            <span className="relative flex h-3 w-3">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-400" />
+                            </span>
+                            <p className="text-green-400 font-medium text-sm sm:text-base">
+                                Open to Work & Collaborations
+
+                            </p>
+                        </motion.div>
+                    </motion.div>
+
+                    {/* ============================= */}
+                    {/*       RIGHT SIDE - FORM       */}
+                    {/* ============================= */}
+
+                    <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                    >
+                        {/* Gradient Border Container */}
+                        <div className="relative p-[1px] rounded-3xl bg-gradient-to-r from-purple-500/30 via-cyan-500/30 to-pink-500/30">
+                            {/* Form Card — solid bg, no backdrop-blur (GPU cost drops to zero) */}
+                            <div className="relative p-8 sm:p-10 rounded-3xl bg-black/80 border border-white/10">
+                                <form onSubmit={handleSubmit} className="space-y-6">
+                                    {/* Name Input */}
+                                    <div className="relative group">
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            value={form.name}
+                                            onChange={handleChange}
+                                            placeholder="Your Name"
+                                            required
+                                            className="w-full p-4 rounded-xl bg-white/5 border border-white/10 focus:border-purple-400 focus:bg-white/10 outline-none transition-all duration-300 text-white placeholder-gray-500 peer"
+                                        />
+                                        <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-500/0 to-purple-500/0 peer-focus:from-purple-500/10 peer-focus:to-cyan-500/10 transition-all duration-300 pointer-events-none" />
+                                    </div>
+
+                                    {/* Email Input */}
+                                    <div className="relative group">
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            value={form.email}
+                                            onChange={handleChange}
+                                            placeholder="Your Email"
+                                            required
+                                            className="w-full p-4 rounded-xl bg-white/5 border border-white/10 focus:border-cyan-400 focus:bg-white/10 outline-none transition-all duration-300 text-white placeholder-gray-500 peer"
+                                        />
+                                        <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-500/0 to-cyan-500/0 peer-focus:from-cyan-500/10 peer-focus:to-purple-500/10 transition-all duration-300 pointer-events-none" />
+                                    </div>
+
+                                    {/* Message Textarea */}
+                                    <div className="relative group">
+                                        <textarea
+                                            name="message"
+                                            value={form.message}
+                                            onChange={handleChange}
+                                            placeholder="Your Message"
+                                            rows={5}
+                                            required
+                                            className="w-full p-4 rounded-xl bg-white/5 border border-white/10 focus:border-pink-400 focus:bg-white/10 outline-none transition-all duration-300 text-white placeholder-gray-500 resize-none peer"
+                                        />
+                                        <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-pink-500/0 to-pink-500/0 peer-focus:from-pink-500/10 peer-focus:to-cyan-500/10 transition-all duration-300 pointer-events-none" />
+                                    </div>
+
+                                    {/* Submit Button — CSS gradient button, shimmer removed */}
+                                    <button
+                                        type="submit"
+                                        disabled={loading}
+                                        className="relative w-full py-4 rounded-xl font-semibold text-white overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed bg-gradient-to-r from-purple-500 via-cyan-500 to-pink-500 hover:from-purple-600 hover:via-cyan-600 hover:to-pink-600 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                                    >
+                                        {/* Button Content */}
+                                        <span className="relative flex items-center justify-center gap-2">
+                                            {loading ? (
+                                                <>
+                                                    <span
+                                                        className="inline-block w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"
+                                                        aria-hidden
+                                                    />
+                                                    Sending...
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <FiSend size={18} />
+                                                    Send Message
+                                                </>
+                                            )}
+                                        </span>
+                                    </button>
+
+                                    {/* Success Message */}
+                                    {success && (
+                                        <motion.div
+                                            initial={{ opacity: 0, y: -10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            className="flex items-center gap-2 p-4 rounded-xl bg-green-500/10 border border-green-500/30"
+                                        >
+                                            <BsCheckCircleFill className="text-green-400" size={20} />
+                                            <p className="text-green-400 text-sm font-medium">
+                                                Got your message—thanks! I’ll get back to you as soon as possible.
+                                            </p>
+                                        </motion.div>
+                                    )}
+
+                                    {/* Error Message */}
+                                    {error && (
+                                        <motion.div
+                                            initial={{ opacity: 0, y: -10 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            className="p-4 rounded-xl bg-red-500/10 border border-red-500/30"
+                                        >
+                                            <p className="text-red-400 text-sm font-medium">
+                                                Oops! Something didn’t work. Please try again.
+
+                                            </p>
+                                        </motion.div>
+                                    )}
+                                </form>
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
+            </div>
+        </section>
+    );
+}
