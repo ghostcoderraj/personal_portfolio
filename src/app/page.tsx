@@ -43,7 +43,7 @@ export default function Home() {
           <About />
           <TechStack />
           <Founder />
-          <Projects />
+          <Build For Companies />
           <Contributions />
           <Contact />
           <Footer />
